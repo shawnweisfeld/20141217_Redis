@@ -1,0 +1,23 @@
+﻿@using CaptainSmackdown.ViewModels.Home
+@using Humanizer;
+@model IndexViewModel
+
+@{
+    ViewBag.Title = "Pick Your Captain";
+}
+
+<div class="jumbotron">
+    <h1>Captain Smackdown</h1>
+    <p>Vote for your favorite Captain from the list below:</p>
+</div>
+
+<ul class="list-inline captians">
+    @foreach (CaptainViewInfo cvi in @Model.Captains)
+    {
+        <li>
+            @Html.ActionLink(cvi.Name, "Vote", new { id = cvi.Id }, new { @class = "btn btn-primary" })
+            <br />
+            <img src="/Content/img/@cvi.Image" alt="@cvi.Name" />
+        </li>
+    }
+</ul>

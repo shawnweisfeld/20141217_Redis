@@ -1,0 +1,24 @@
+﻿@using CaptainSmackdown.ViewModels.Home
+@model LeaderBoardViewModel
+
+@{
+    ViewBag.Title = "LederBoard";
+}
+
+<div class="jumbotron">
+    <h1>Winner: @Model.Leader.Name</h1>
+    <p>With @Model.Leader.Votes @Model.Leader.Name is currently in the lead.</p>
+    <img src="/Content/img/@Model.Leader.Image" alt="@Model.Leader.Name" />
+</div>
+
+<h2>Runners Up:</h2>
+<ul class="list-inline captians">
+    @foreach (CaptainViewInfo captain in Model.RunnersUp)
+    {
+        <li>
+            <h3>@captain.Name</h3>
+            <h4>@captain.Votes Votes</h4>
+            <img src="/Content/img/@captain.Image" alt="@captain.Name" />
+        </li>
+    }
+</ul>
